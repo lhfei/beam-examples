@@ -18,6 +18,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.beam</groupId>
 			<artifactId>beam-runners-spark</artifactId>
 			<!-- <exclusions>
@@ -39,6 +44,21 @@
 				</exclusion>
 			</exclusions> -->
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.beam</groupId>
+			<artifactId>beam-sdks-java-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.beam</groupId>
+			<artifactId>beam-sdks-java-io-google-cloud-platform</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.beam</groupId>
+			<artifactId>beam-sdks-java-extensions-google-cloud-platform-core</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.spark</groupId>
@@ -52,15 +72,39 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-bigquery</artifactId>
+			<version>v2-rev434-1.25.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-pubsub</artifactId>
+			<version>v1-rev425-1.25.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-streaming_${scala.binary.version}</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-client</artifactId>
-			<version>3.1.0</version>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.36.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>27.1-jre</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>2.1</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
