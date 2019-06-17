@@ -22,6 +22,12 @@
 		<jackson.version>2.9.8</jackson.version>
 		<sl4j.version>1.7.26</sl4j.version>
 		<log4j.version>1.2.17</log4j.version>
+		<hamcrest.version>2.1</hamcrest.version>
+		<netty.version>4.1.36.Final</netty.version>
+		<mockito.version>1.10.19</mockito.version>
+		<guava.version>27.1-jre</guava.version>
+		<google.api.services.bigquery>v2-rev434-1.25.0</google.api.services.bigquery>
+		<google.api.services.pubsub>v1-rev425-1.25.0</google.api.services.pubsub>
 	</properties>
 
 	<dependencies>
@@ -42,6 +48,25 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>${netty.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>${hamcrest.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 	<dependencyManagement>
@@ -75,7 +100,21 @@
 			    <artifactId>beam-sdks-java-io-hadoop-file-system</artifactId>
 			    <version>${beam.version}</version>
 			</dependency>
+
+			<!-- Google APIs -->
+			<dependency>
+				<groupId>com.google.apis</groupId>
+				<artifactId>google-api-services-bigquery</artifactId>
+				<version>${google.api.services.bigquery}</version>
+			</dependency>
+		
+			<dependency>
+				<groupId>com.google.apis</groupId>
+				<artifactId>google-api-services-pubsub</artifactId>
+				<version>${google.api.services.pubsub}</version>
+			</dependency>
 			
+			<!-- For Spark -->
 			<dependency>
 				<groupId>org.apache.spark</groupId>
 				<artifactId>spark-core_${scala.binary.version}</artifactId>
@@ -88,6 +127,7 @@
 				<version>${spark.version}</version>
 			</dependency>
 
+			<!-- For Hadoop -->
 			<dependency>
 				<groupId>org.apache.hadoop</groupId>
 				<artifactId>hadoop-client</artifactId>
@@ -114,7 +154,7 @@
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
-				<version>1.10.19</version>
+				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
