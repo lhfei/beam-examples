@@ -36,6 +36,19 @@ import cn.lhfei.beam.options.HDFSFileSystemOptions;
  * @author Hefei Li
  *
  * Created on Jun 13, 2019
+ * 
+ * Usage: <br>
+ * spark-submit  --class "cn.lhfei.beam.runner.spark.MinimalWordCount" \
+    --master yarn \
+    --deploy-mode cluster \
+    --num-executors 2 \
+    --executor-memory 1g \
+    --executor-cores 2 \
+    /export/app_workspaces/beam-examples/beam-spark-runner/target/beam-spark-runner-2.13.0-shaded.jar \
+    --runner=SparkRunner \
+    --inputFile=hdfs://host-10-182-25-192:8020/apps/beam/datasets/README.md \
+    --outputFile=hdfs://host-10-182-25-192:8020/apps/beam/output/wordcount \
+    --hdfsConfiguration=[{\"fs.defaultFS\":\"hdfs://host-10-182-25-192:8020\"}]
  */
 
 public class MinimalWordCount {
