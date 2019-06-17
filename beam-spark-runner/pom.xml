@@ -74,6 +74,9 @@
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-streaming_${scala.binary.version}</artifactId>
 		</dependency>
+		
+		<!-- For Hadoop -->
+
 
 		<dependency>
 			<groupId>io.netty</groupId>

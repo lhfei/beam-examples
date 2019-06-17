@@ -20,8 +20,6 @@ import java.util.Arrays;
 
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.io.TextIO;
-import org.apache.beam.sdk.io.hdfs.HadoopFileSystemOptions;
-import org.apache.beam.sdk.options.PipelineOptions;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.transforms.Count;
 import org.apache.beam.sdk.transforms.Filter;
@@ -29,6 +27,8 @@ import org.apache.beam.sdk.transforms.FlatMapElements;
 import org.apache.beam.sdk.transforms.MapElements;
 import org.apache.beam.sdk.values.KV;
 import org.apache.beam.sdk.values.TypeDescriptors;
+
+import cn.lhfei.beam.options.HDFSFileSystemOptions;
 
 /**
  * @version 0.1
@@ -42,19 +42,18 @@ public class MinimalWordCount {
 
 	public static void main(String[] args) {
 	
-		HadoopFileSystemOptions options = PipelineOptionsFactory.fromArgs(args).withValidation()
-				.as(HadoopFileSystemOptions.class);
-		
+		HDFSFileSystemOptions options = PipelineOptionsFactory.fromArgs(args).withValidation()
+				.as(HDFSFileSystemOptions.class);
 
 		Pipeline p = Pipeline.create(options);
 
-		p.apply(TextIO.read().from("hdfs://host-10-182-25-192:8020/apps/beam/datasets/README.md"))
+		p.apply(TextIO.read().from(options.getInputFile()))
 				.apply(FlatMapElements.into(TypeDescriptors.strings())
 						.via((String word) -> Arrays.asList(word.split("\\W+"))))
 				.apply(Filter.by((String word) -> !word.isEmpty())).apply(Count.perElement())
 				.apply(MapElements.into(TypeDescriptors.strings())
 						.via((KV<String, Long> wordCount) -> wordCount.getKey() + ": " + wordCount.getValue()))
-				.apply(TextIO.write().to("hdfs://host-10-182-25-192:8020/apps/beam/output/wordcount"));
+				.apply(TextIO.write().to(options.getOutputFile()));
 		
 		p.run().waitUntilFinish();
 	}
