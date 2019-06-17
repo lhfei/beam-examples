@@ -40,7 +40,7 @@ import org.apache.beam.sdk.values.TypeDescriptors;
 public class MinimalWordCount {
 
 	public static void main(String[] args) {
-		PipelineOptions options = PipelineOptionsFactory.create();
+		PipelineOptions options = PipelineOptionsFactory.fromArgs(args).withValidation().as(PipelineOptions.class);
 
 		Pipeline p = Pipeline.create(options);
 
