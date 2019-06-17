@@ -20,6 +20,7 @@ import java.util.Arrays;
 
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.io.TextIO;
+import org.apache.beam.sdk.io.hdfs.HadoopFileSystemOptions;
 import org.apache.beam.sdk.options.PipelineOptions;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.transforms.Count;
@@ -40,7 +41,10 @@ import org.apache.beam.sdk.values.TypeDescriptors;
 public class MinimalWordCount {
 
 	public static void main(String[] args) {
-		PipelineOptions options = PipelineOptionsFactory.fromArgs(args).withValidation().as(PipelineOptions.class);
+	
+		HadoopFileSystemOptions options = PipelineOptionsFactory.fromArgs(args).withValidation()
+				.as(HadoopFileSystemOptions.class);
+		
 
 		Pipeline p = Pipeline.create(options);
 
