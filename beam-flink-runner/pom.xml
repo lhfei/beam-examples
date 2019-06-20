@@ -35,6 +35,12 @@
 		<dependency>
 			<groupId>org.apache.beam</groupId>
 			<artifactId>beam-sdks-java-io-hadoop-file-system</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-annotations</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
