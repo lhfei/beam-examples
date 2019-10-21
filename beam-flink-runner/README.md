@@ -27,11 +27,11 @@ This `WordCount` example is implemented by Flink Funner.
        --num-executors 2 \
        --executor-memory 1g \
        --executor-cores 2 \
-       beam-flink-runner/target/beam-flink-runner-2.13.0-shaded.jar \
+       /export/app_workspaces/beam-examples/beam-flink-runner/target/beam-flink-runner-2.13.0-shaded.jar \
+       --flinkMaster=host-10-182-62-150:8081 \
        --inputFile=hdfs://host-10-182-25-192:8020/apps/beam/datasets/README.md \
        --outputFile=hdfs://host-10-182-25-192:8020/apps/beam/output/wordcount \
-       --hdfsConfiguration=[{\"fs.defaultFS\":\"hdfs://host-10-182-25-192:8020\"}] \
-       --runner=SparkRunner
+       --runner=FlinkRunner
    ```
 
 7. Run `cat output/user_score` to verify the program ran correctly and the output file was created.
